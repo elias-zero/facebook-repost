@@ -1,1 +1,16 @@
 
+[
+  {
+    "coupon_title": "كوبون نمشي",
+    "coupon_description": "كاش باك – خصم 40% على منتجات هيبسي",
+    "url": "https://www.discountcoupon.online",
+    "image_url": "https://example.com/image1.jpg"
+  },
+  {
+    "coupon_title": "كوبون آخر",
+    "coupon_description": "خصم 20% على منتجات معينة",
+    "url": "https://www.discountcoupon.online",
+    "image_url": "https://example.com/image2.jpg"
+  }
+  // أضف باقي الكوبونات هنا ...
+]
