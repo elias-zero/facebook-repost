@@ -1,15 +1,38 @@
-
 [
   {
-    "coupon_title": "كوبون نمشي",
-    "coupon_description": "كاش باك – خصم 40% على منتجات هيبسي",
+    "title": "كوبون ايس - ACE Coupon",
+    "description": "خصم 10% على جميع المنتجات",
     "url": "https://www.discountcoupon.online",
-    "image_url": "https://example.com/image1.jpg"
+    "image_url": "https://www.discountcoupon.online/uploads/1744324924_ACE.webp"
   },
   {
-    "coupon_title": "كوبون آخر",
-    "coupon_description": "خصم 20% على منتجات معينة",
+    "title": "كوبون ستايلي - Styli Coupon",
+    "description": "خصم 12% على جميع المنتجات",
     "url": "https://www.discountcoupon.online",
-    "image_url": "https://example.com/image2.jpg"
+    "image_url": "https://www.discountcoupon.online/uploads/1744323406_Styli.png"
+  },
+  {
+    "title": "كوبون ال جي - LG Coupon",
+    "description": "خصم 10% على جميع المنتجات",
+    "url": "https://www.discountcoupon.online",
+    "image_url": "https://www.discountcoupon.online/uploads/1744321494_LG.webp"
+  },
+  {
+    "title": "كوبون دوراتك - Duratak Coupon",
+    "description": "خصم 15% على جميع المنتجات",
+    "url": "https://www.discountcoupon.online",
+    "image_url": "https://www.discountcoupon.online/uploads/1744301849_duratak.webp"
+  },
+  {
+    "title": "كوبون نيم شيب - Neamcheap Coupon",
+    "description": "خصم 56% على نطاق .كوم",
+    "url": "https://www.discountcoupon.online",
+    "image_url": "https://www.discountcoupon.online/uploads/1744238234_Namecheap.webp"
+  },
+  {
+    "title": "كوبون نمشي - Namshi Coupon",
+    "description": "كاش باك – خصم 40% على منتجات هيبسي",
+    "url": "https://www.discountcoupon.online",
+    "image_url": "https://www.discountcoupon.online/uploads/1744235167_namshi.webp"
   }
 ]
