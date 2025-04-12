@@ -17,38 +17,47 @@ with open('coupons.json', 'r', encoding='utf-8') as f:
 # --- حساب اليوم في الشهر ---
 today = datetime.now()
 day_of_month = today.day
-# نفترض أن العدد الإجمالي للكوبونات هو 480 ومنشور اليوم يعتمد على 16 كوبون
-# إذن المنشوارات للشهر: 16 منشور يومياً * 30 يومًا = 480 منشور (يمكن تعديل الحساب إذا كان الشهر مختلفاً)
 start_index = (day_of_month - 1) * 16
 end_index = start_index + 16
 
-# إذا انتهت القائمة (أي في حالة انتهاء شهر كامل)، نعيد الدورة من البداية
 if start_index >= len(coupons):
     start_index = 0
     end_index = 16
 
 today_coupons = coupons[start_index:end_index]
 
-# --- نشر المنشورات على صفحة فيسبوك ---
-# وظيفة للنشر على فيسبوك باستخدام Graph API
+# --- وظيفة النشر مع رفع الصورة ---
 def post_on_facebook(message, image_url=None):
-    post_url = f"https://graph.facebook.com/{PAGE_ID}/feed"
-    payload = {
-        "message": message,
-        "access_token": ACCESS_TOKEN
-    }
-    # يمكنك التوسع لاضافة الصور بطريقة أخرى عبر خاصية attachments أو عن طريق تحميل الصورة أولاً
     if image_url:
-        payload["link"] = image_url  # إما استخدام الرابط كمرفق أو تضمينه في الرسالة
+        # رفع الصورة مباشرة إلى فيسبوك باستخدام الرابط
+        post_url = f"https://graph.facebook.com/{PAGE_ID}/photos"
+        payload = {
+            "url": image_url,
+            "message": message,
+            "access_token": ACCESS_TOKEN
+        }
+    else:
+        # نشر منشور نصي عادي
+        post_url = f"https://graph.facebook.com/{PAGE_ID}/feed"
+        payload = {
+            "message": message,
+            "access_token": ACCESS_TOKEN
+        }
     
     response = requests.post(post_url, data=payload)
     if response.status_code == 200:
-        print("تم النشر بنجاح:", message)
+        print("تم النشر بنجاح!")
+        print("الرسالة:", message)
+        if image_url:
+            print("الصورة:", image_url)
     else:
         print("خطأ في النشر:", response.text)
 
-# --- نشر كوبون كل مرة ---
+# --- نشر الكوبونات ---
 for coupon in today_coupons:
-    # تكوين رسالة المنشور
-    message = f"{coupon['coupon_title']}\n{coupon['coupon_description']}\nللحصول على الكوبون اضغط: {coupon['url']}"
-    post_on_facebook(message, image_url=coupon.get("image_url"))
+    message = (
+        f"{coupon['coupon_title']}\n"
+        f"{coupon['coupon_description']}\n"
+        f"للحصول على الكوبون اضغط: {coupon['url']}"
+    )
+    post_on_facebook(message, coupon.get("image_url"))
